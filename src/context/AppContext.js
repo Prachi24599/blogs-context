@@ -5,7 +5,7 @@ import { baseUrl } from "../baseUrl";
 export const AppContext = createContext();
 
 //Step 2 : Create Provider
-function AppContextProvider({ children }) {
+export default function AppContextProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
