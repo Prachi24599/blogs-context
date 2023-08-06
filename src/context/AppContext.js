@@ -12,9 +12,15 @@ export default function AppContextProvider({ children }) {
   const [totalPages, setTotalPages] = useState(null);
 
   //fetch data
-  async function fetchBlogPosts(page = 1) {
+  async function fetchBlogPosts(page = 1, tag = null, category) {
     setLoading(true);
     let url = `${baseUrl}?page=${page}`;
+    if (tag) {
+      url += `&tag=${tag}`;
+    }
+    if (category) {
+      url += `&category=${category}`;
+    }
     try {
       const result = await fetch(url);
       const data = await result.json();
@@ -25,7 +31,7 @@ export default function AppContextProvider({ children }) {
       setPosts(data.posts);
       setTotalPages(data.totalPages);
     } catch (error) {
-      console.log("Error in fetching data");
+      console.log("Error in Fetching BlogPosts", error);
       setPage(1);
       setPosts([]);
       setTotalPages(null);
@@ -33,6 +39,7 @@ export default function AppContextProvider({ children }) {
     setLoading(false);
   }
 
+  //Handle when next and previous buttons are clicked
   function handlePageChange(page) {
     setPage(page);
     fetchBlogPosts(page);
