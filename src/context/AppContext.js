@@ -24,7 +24,7 @@ export default function AppContextProvider({ children }) {
     try {
       const result = await fetch(url);
       const data = await result.json();
-      if (!data.post || data.posts.length === 0)
+      if (!data.posts || data.posts.length === 0)
         throw new Error("Something Went Wrong!");
       console.log("API response", data);
       setPage(data.page);
