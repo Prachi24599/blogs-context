@@ -1,7 +1,4 @@
 import { useContext, useEffect } from "react";
-import Blogs from "./components/Blogs";
-import Header from "./components/Header";
-import Pagination from "./components/Pagination";
 import Home from "./pages/Home";
 import BlogPage from "./pages/BlogPage";
 import CategoryPage from "./pages/CategoryPage";
