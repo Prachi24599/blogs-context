@@ -2,6 +2,10 @@ import { useContext, useEffect } from "react";
 import Blogs from "./components/Blogs";
 import Header from "./components/Header";
 import Pagination from "./components/Pagination";
+import Home from "./pages/Home";
+import BlogPage from "./pages/BlogPage";
+import CategoryPage from "./pages/CategoryPage";
+import TagPage from "./pages/TagPage";
 import { AppContext } from "./context/AppContext";
 import "./App.css";
 import { Route, Routes, useLocation } from "react-router";
@@ -26,6 +30,8 @@ export default function App() {
     } else {
       fetchBlogPosts(Number(page));
     }
+    //we dont want this code to run just once, whenever there will be change in pathname or page,
+    //we need to render this so we added these in dependency array
   }, [location.pathname, location.search]);
 
   return (
