@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 const TagPage = () => {
   const navigation = useNavigate();
   const location = useLocation();
-  const tag = location.pathname("/").at(-1);
+  const tag = location.pathname.split("/").at(-1);
   return (
     <div>
       <Header />
