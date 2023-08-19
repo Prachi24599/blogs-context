@@ -5,7 +5,9 @@ import CategoryPage from "./pages/CategoryPage";
 import TagPage from "./pages/TagPage";
 import { AppContext } from "./context/AppContext";
 import "./App.css";
-import { Route, Routes, useLocation } from "react-router";
+import { Route, Routes } from "react-router";
+import { useLocation } from "react-router-dom";
+
 import { useSearchParams } from "react-router-dom";
 
 export default function App() {
