@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useLocation, useNavigation } from "react-router";
 import { AppContext } from "../context/AppContext";
 import { baseUrl } from "../baseUrl";
+import Header from "../components/Header";
+import Spinner from "../components/Spinner";
 
 const BlogPage = () => {
   const [blog, setBlog] = useState(null);
@@ -35,7 +37,31 @@ const BlogPage = () => {
     }
   }, [location.pathname]);
 
-  return <div>BlogPage</div>;
+  return (
+    <div>
+      <Header />
+      <div>
+        <button onClick={() => navigation(-1)}>Back</button>
+      </div>
+      {loading ? (
+        <Spinner />
+      ) : blog ? (
+        <div>
+          <BlogDetails post={blog} />
+          <h2>Related Blogs</h2>
+          {relatedBlogs.map((post) => {
+            <div key={post.id}>
+              <BlogDetails post={post} />
+            </div>;
+          })}
+        </div>
+      ) : (
+        <div>
+          <p>No Blogs Found</p>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default BlogPage;
