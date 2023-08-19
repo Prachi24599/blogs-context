@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react";
-import { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigation } from "react-router";
 import { AppContext } from "../context/AppContext";
 import { baseUrl } from "../baseUrl";
 import Header from "../components/Header";
 import Spinner from "../components/Spinner";
+import BlogDetails from "../components/BlogDetails";
 
 const BlogPage = () => {
   const [blog, setBlog] = useState(null);
@@ -50,9 +50,11 @@ const BlogPage = () => {
           <BlogDetails post={blog} />
           <h2>Related Blogs</h2>
           {relatedBlogs.map((post) => {
-            <div key={post.id}>
-              <BlogDetails post={post} />
-            </div>;
+            return (
+              <div key={post.id}>
+                <BlogDetails post={post} />
+              </div>
+            );
           })}
         </div>
       ) : (
